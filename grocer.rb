@@ -30,11 +30,11 @@ end
           cart[itemwithCoupon][:clearance] = cart[coupon[:item]][:clearance]
           cart[itemwithCoupon][:count] = coupon[:num]
           cart[coupon[:item]][:count] -= coupon[:num]
-        end
       end
       end
       if cart[coupon[:item]][:count] >= coupon[:num]
         apply_coupons
+        end
     end
   end
   cart
