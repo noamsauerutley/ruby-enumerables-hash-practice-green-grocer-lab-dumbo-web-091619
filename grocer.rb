@@ -31,7 +31,8 @@ end
           cart[coupon[:item]][:count] -= coupon[:num]
       end
       end
-      if cart[coupon[:item]][:count] >= coupon[:num]
+      cart.each do |item|
+      if cart[item] == coupon[:item] && cart[coupon[:item]][:count] >= coupon[:num]
         apply_coupons
       end
     end
