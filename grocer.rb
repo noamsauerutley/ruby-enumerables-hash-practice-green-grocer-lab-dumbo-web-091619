@@ -21,6 +21,7 @@ end
       if cart[coupon[:item]][:count] >= coupon[:num]
         itemwithCoupon = "#{coupon[:item]} W/COUPON"
         if cart[itemwithCoupon]
+          cart each do |item|
           cart[itemwithCoupon][:count] += coupon[:num]
           cart[coupon[:item]][:count] -= coupon[:num]
         else
