@@ -55,4 +55,8 @@ end
 
 def checkout(cart, coupons)
   # code here
+  consolidate_cart
+  apply_coupons
+  apply_clearance
+  consolidate_cart
 end
