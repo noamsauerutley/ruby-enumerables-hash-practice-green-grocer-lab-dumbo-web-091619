@@ -35,6 +35,7 @@ end
       if cart[item] == coupon[:item] && cart[coupon[:item]][:count] >= coupon[:num]
         apply_coupons
       end
+      end
     end
   end
   cart
