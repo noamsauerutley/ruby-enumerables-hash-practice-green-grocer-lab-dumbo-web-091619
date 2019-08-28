@@ -35,13 +35,10 @@ end
       end
       if cart[coupon[:item]][:count] >= coupon[:num]
         apply_coupons
-      elsif cart.keys.include?(coupon[:item])
-          apply_coupons
-      # end
+      end
     end
   end
   cart
-
 end
 
 #cart is a hash with 2 keys with a nested hash with 3 values
