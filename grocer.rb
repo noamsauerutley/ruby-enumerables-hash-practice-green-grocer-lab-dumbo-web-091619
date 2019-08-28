@@ -20,11 +20,10 @@ end
     if cart.keys.include?(coupon[:item])
       if cart[coupon[:item]][:count] >= coupon[:num]
         itemwithCoupon = "#{coupon[:item]} W/COUPON"
-        if cart[itemwithCoupon]
-          cart.each {|item|
+          cart.each do |item|
+            if cart[itemwithCoupon]
           cart[itemwithCoupon][:count] += coupon[:num]
           cart[coupon[:item]][:count] -= coupon[:num]
-        }
         else
           cart[itemwithCoupon] = {}
           cart[itemwithCoupon][:price] = (coupon[:cost] / coupon[:num])
@@ -32,6 +31,7 @@ end
           cart[itemwithCoupon][:count] = coupon[:num]
           cart[coupon[:item]][:count] -= coupon[:num]
         end
+      end
       end
       if cart[coupon[:item]][:count] >= coupon[:num]
         apply_coupons
