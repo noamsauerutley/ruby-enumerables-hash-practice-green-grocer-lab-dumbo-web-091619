@@ -15,53 +15,33 @@ def consolidate_cart(cart)
 end
 
 
-#  def apply_coupons(cart, coupons)
-#   coupons.each do |coupon|
-#     coupon.each do |item, info|
-#     if cart.keys.include?(coupon[:item])
-#       if cart[coupon[:item]][:count] >= coupon[:num]
-#         itemwithCoupon = "#{coupon[:item]} W/COUPON"
-#           if cart[itemwithCoupon]
-#
-#           cart[itemwithCoupon][:count] += coupon[:num]
-#           cart[coupon[:item]][:count] -= coupon[:num]
-#         else
-#           cart[itemwithCoupon] = {}
-#           cart[itemwithCoupon][:price] = (coupon[:cost] / coupon[:num])
-#           cart[itemwithCoupon][:clearance] = cart[coupon[:item]][:clearance]
-#           cart[itemwithCoupon][:count] = coupon[:num]
-#           cart[coupon[:item]][:count] -= coupon[:num]
-#       end
-#       end
-#       if cart[coupon[:item]][:count] >= coupon[:num]
-#         apply_coupons
-#       end
-#     end
-#   end
-#   cart
-# end
-
-
-def apply_coupons(cart, coupons)
-
+ def apply_coupons(cart, coupons)
   coupons.each do |coupon|
-    coupon.each do |attribute, value|
-      name = coupon[:item]
+    coupon.each do |item, info|
+    if cart.keys.include?(coupon[:item])
+      if cart[coupon[:item]][:count] >= coupon[:num]
+        itemwithCoupon = "#{coupon[:item]} W/COUPON"
+          if cart[itemwithCoupon]
 
-      if cart[name] && cart[name][:count] >= coupon[:num]
-        if cart["#{name} W/COUPON"]
-          cart["#{name} W/COUPON"][:count] += 1
+          cart[itemwithCoupon][:count] += coupon[:num]
+          cart[coupon[:item]][:count] -= coupon[:num]
         else
-          cart["#{name} W/COUPON"] = {:price => coupon[:cost],
-          :clearance => cart[name][:clearance], :count => 1}
-        end
-
-      cart[name][:count] -= coupon[:num]
+          cart[itemwithCoupon] = {}
+          cart[itemwithCoupon][:price] = (coupon[:cost] / coupon[:num])
+          cart[itemwithCoupon][:clearance] = cart[coupon[:item]][:clearance]
+          cart[itemwithCoupon][:count] = coupon[:num]
+          cart[coupon[:item]][:count] -= coupon[:num]
+      end
+      end
+      if cart[coupon[:item]][:count] >= coupon[:num]
+        apply_coupons
+      end
+      end
     end
   end
-end
   cart
 end
+
 
 
 def apply_clearance(cart)
