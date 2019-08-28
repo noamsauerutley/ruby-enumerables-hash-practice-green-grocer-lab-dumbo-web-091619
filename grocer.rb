@@ -60,7 +60,7 @@ end
     result[food] = info
   end
   result
-end	end
+end
 
 def apply_clearance(cart)
   # code here
