@@ -34,7 +34,9 @@ end
       end
       if cart[coupon[:item]][:count] >= coupon[:num]
         apply_coupons
-        end
+      elsif cart.keys.include?(coupon[:item])
+        apply_coupons
+      end
     end
   end
   cart
