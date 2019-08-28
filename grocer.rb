@@ -37,7 +37,7 @@ end
         apply_coupons
       elsif cart.keys.include?(coupon[:item])
           apply_coupons
-      end
+      # end
     end
   end
   cart
